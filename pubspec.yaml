@@ -1,0 +1,81 @@
+name: imagine_cup_software
+description: A new Flutter project.
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+# The following defines the version and build number for your application.
+# A version number is three numbers separated by dots, like 1.2.43
+# followed by an optional build number separated by a +.
+# Both the version and the builder number may be overridden in flutter
+# build by specifying --build-name and --build-number, respectively.
+# In Android, build-name is used as versionName while build-number used as versionCode.
+# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
+# In iOS, build-name is used as CFBundleShortVersionString while build-number is used as CFBundleVersion.
+# Read more about iOS versioning at
+# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
+# In Windows, build-name is used as the major, minor, and patch parts
+# of the product and file versions while build-number is used as the build suffix.
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.19.0 <3.0.0'
+
+# Dependencies specify other packages that your package needs in order to work.
+# To automatically upgrade your package dependencies to the latest versions
+# consider running `flutter pub upgrade --major-versions`. Alternatively,
+# dependencies can be manually updated by changing the version numbers below to
+# the latest version available on pub.dev. To see which dependencies have newer
+# versions available, run `flutter pub outdated`.
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+  percent_indicator: ^3.4.0
+  intro_slider: ^2.3.4
+  flutter_staggered_grid_view: ^0.4.1
+  flutter_tabler_icons: ^1.1.1
+  google_fonts: ^2.3.1
+  dropdown_button2: 1.1.0
+  flutter_shapes: ^0.3.0
+  advance_pdf_viewer: any
+  path_provider: ^2.0.0
+  http: ^0.13.0
+  speech_to_text: ^5.6.1
+  highlight_text: ^1.4.1
+  avatar_glow: ^2.0.2
+  flutter_pdfview: ^1.0.4
+  flutter_bluetooth_serial: ^0.4.0
+  audioplayers:
+
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^1.0.0
+
+flutter:
+
+    uses-material-design: true
+
+    fonts:
+      - family: Poppins
+        fonts:
+          - asset: fonts/Poppins-Regular.ttf
+
+    assets:
+      - assets/
+      - assets/images/
+      - assets/images/comingsoon.jpg
+      - assets/images/class.png
+      - assets/images/subject.png
+      - assets/images/Science.png
+      - assets/images/maths.png
+      - assets/pdf/
+      - assets/BEEP.wav
+      - assets/tactile/
+
+
