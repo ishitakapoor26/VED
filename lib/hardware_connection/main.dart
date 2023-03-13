@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 import 'package:imagine_cup_software/hardware_connection/send_message.dart';
 
+import '../dashboard.dart';
 import 'connection.dart';
 
 void main(){
@@ -50,7 +51,7 @@ class Home extends StatelessWidget {
             leading: GestureDetector(
                 child: Icon(Icons.arrow_back),
                 onTap: (){
-                  Navigator.pop(context);
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> Dashboard()));
                 },
             ),
             title: Text("Connection"),
