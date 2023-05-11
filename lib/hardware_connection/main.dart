@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 import 'package:imagine_cup_software/hardware_connection/send_message.dart';
 
-import '../dashboard.dart';
+import '../Dashboard/dashboard.dart';
 import 'connection.dart';
 
 void main(){

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "215461436423",
+    "project_id": "e-drishti-c526b",
+    "storage_bucket": "e-drishti-c526b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:215461436423:android:560dd41074ccaccd005ea2",
+        "android_client_info": {
+          "package_name": "com.example.imagine_cup_software"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "215461436423-r228nclbvi07tqv1ak7hpnkm6m92cijf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0spwz2r9KqCh565soxuryBzaWM2UIv0E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "215461436423-ekds7ph6q44d1v1np6e4r545jqj6rm09.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

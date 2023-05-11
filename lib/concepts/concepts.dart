@@ -3,7 +3,7 @@ import 'package:imagine_cup_software/concepts/concepts_widget.dart';
 // import 'package:imagine_cup_software/understandingScienceObject.dart';
 import 'package:flutter/material.dart';
 
-import '../dashboard.dart';
+import '../Dashboard/dashboard.dart';
 
 class Concepts extends StatefulWidget {
   const Concepts({Key? key}) : super(key: key);

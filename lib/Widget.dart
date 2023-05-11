@@ -1,4 +1,4 @@
-import 'package:imagine_cup_software/dashboard.dart';
+import 'package:imagine_cup_software/Dashboard/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:imagine_cup_software/test_yourself/start.dart';

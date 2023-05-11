@@ -1,8 +1,8 @@
-import 'Widget.dart';
+import '../Widget.dart';
 import 'package:imagine_cup_software/place_staggered_gridview.dart';
 import 'package:flutter/material.dart';
 
-import 'package:imagine_cup_software/dashboardUI.dart';
+import 'package:imagine_cup_software/Dashboard/dashboardUI.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);

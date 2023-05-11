@@ -3,7 +3,7 @@ import 'package:imagine_cup_software/Widget.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
 
-import 'package:imagine_cup_software/intro_slider.dart';
+import 'package:imagine_cup_software/onboardingScreens/intro_slider.dart';
 
 class splashscreen extends StatefulWidget {
   const splashscreen({ Key? key }) : super(key: key);

@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import '../dashboard.dart';
+import '../Dashboard/dashboard.dart';
 import 'test_yourself.dart';
 class StartScreen extends StatelessWidget {
   const StartScreen({Key? key}) : super(key: key);

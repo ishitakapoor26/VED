@@ -1,7 +1,7 @@
 import 'package:imagine_cup_software/read/pdfView.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:imagine_cup_software/dashboard.dart';
+import 'package:imagine_cup_software/Dashboard/dashboard.dart';
 
 class PdfSelect extends StatefulWidget {
   const PdfSelect({Key? key}) : super(key: key);

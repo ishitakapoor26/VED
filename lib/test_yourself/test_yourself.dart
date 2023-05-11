@@ -1,12 +1,12 @@
 import 'dart:async';
 import 'package:imagine_cup_software/Widget.dart';
-import 'package:imagine_cup_software/dashboardUI.dart';
+import 'package:imagine_cup_software/Dashboard/dashboardUI.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 
-import '../dashboard.dart';
+import '../Dashboard/dashboard.dart';
 
 List<dynamic> myList = ["90", 'square', '11', 'triangle', 'parallelogram'];
 List<String> questions = [
