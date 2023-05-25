@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:imagine_cup_software/Dashboard/dashboard.dart';
+import 'package:imagine_cup_software/Dashboard/homepage.dart';
+
+import '../Dashboard/home.dart';
 
 class onboardSecond extends StatelessWidget {
   const onboardSecond({Key? key}) : super(key: key);
@@ -132,7 +135,7 @@ class onboardSecond extends StatelessWidget {
                             icon: Icon(Icons.arrow_forward_ios,
                               color: Colors.white,),
                             onPressed: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => Dashboard()));
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
                             },
                           ),
                         ),
