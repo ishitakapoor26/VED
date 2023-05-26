@@ -66,7 +66,7 @@ class _HomepageState extends State<Homepage> {
                           letterSpacing: 0.5,
                           color: Colors.grey.shade100,
                           fontFamily: "Lato",
-                          fontSize: 16,
+                          fontSize: 14,
                           fontWeight: FontWeight.w400,
                         ),
                         decoration: InputDecoration(
@@ -94,25 +94,26 @@ class _HomepageState extends State<Homepage> {
                 padding: const EdgeInsets.all(12.0),
                 child: Text("Course categories",
                 style: TextStyle(
-                  fontSize: 24,
+                  fontSize: 20,
                   fontFamily: "Lato",
                   fontWeight: FontWeight.w600,
                 ),),
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 Expanded(
                   child: Column(
                     children: <Widget>[
                       Padding(
-                        padding: const EdgeInsets.all(12.0),
+                        padding: const EdgeInsets.only(left: 12.0, right: 1.0, bottom: 10, top: 4),
                         child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(13),
                           color: Colors.tealAccent.shade100,
                           ),
                           height: MediaQuery.of(context).size.height/10,
-                          width: MediaQuery.of(context).size.width/4,
+                          width: MediaQuery.of(context).size.width/3.8,
                         child: IconButton(
                           onPressed: (){},
                           icon: Icon(Icons.science_outlined,
@@ -127,7 +128,7 @@ class _HomepageState extends State<Homepage> {
                         style: TextStyle(
                           fontWeight: FontWeight.w500,
                           fontFamily: "Lato",
-                          fontSize: 18,
+                          fontSize: 14,
                         ),),
                       ),
                     ],
@@ -137,14 +138,14 @@ class _HomepageState extends State<Homepage> {
                   child: Column(
                     children: <Widget>[
                       Padding(
-                        padding: const EdgeInsets.all(12.0),
+                        padding: const EdgeInsets.only(left: 4,right: 1.0, bottom: 10, top: 4),
                         child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(13),
                             color: Colors.amberAccent.shade100,
                           ),
                           height: MediaQuery.of(context).size.height/10,
-                          width: MediaQuery.of(context).size.width/4,
+                          width: MediaQuery.of(context).size.width/3.8,
                           child: IconButton(
                             onPressed: (){},
                             icon: Icon(Icons.laptop_windows_outlined,
@@ -159,7 +160,7 @@ class _HomepageState extends State<Homepage> {
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
                             fontFamily: "Lato",
-                            fontSize: 18,
+                            fontSize: 14,
                           ),),
                       ),
                     ],
@@ -170,14 +171,14 @@ class _HomepageState extends State<Homepage> {
                   child: Column(
                     children: <Widget>[
                       Padding(
-                        padding: const EdgeInsets.all(12.0),
+                        padding: const EdgeInsets.only(left: 4,right: 4.0,bottom: 10, top: 4),
                         child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(13),
                             color: Colors.blue.shade100,
                           ),
                           height: MediaQuery.of(context).size.height/10,
-                          width: MediaQuery.of(context).size.width/4,
+                          width: MediaQuery.of(context).size.width/3.8,
                           child: IconButton(
                             onPressed: (){},
                             icon: Icon(Icons.add_chart,
@@ -192,7 +193,7 @@ class _HomepageState extends State<Homepage> {
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
                             fontFamily: "Lato",
-                            fontSize: 18,
+                            fontSize: 14,
                           ),),
                       ),
                     ],
@@ -203,14 +204,14 @@ class _HomepageState extends State<Homepage> {
                   child: Column(
                     children: <Widget>[
                       Padding(
-                        padding: const EdgeInsets.all(12.0),
+                        padding: const EdgeInsets.only(bottom: 10.0, right: 12, top: 4),
                         child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(13),
                             color: Colors.orange.shade100,
                           ),
                           height: MediaQuery.of(context).size.height/10,
-                          width: MediaQuery.of(context).size.width/4,
+                          width: MediaQuery.of(context).size.width/3.8,
                           child: IconButton(
                             onPressed: (){},
                             icon: Icon(Icons.auto_graph_outlined,
@@ -225,7 +226,7 @@ class _HomepageState extends State<Homepage> {
                           style: TextStyle(
                             fontWeight: FontWeight.w500,
                             fontFamily: "Lato",
-                            fontSize: 18,
+                            fontSize: 14,
                           ),),
                       ),
                     ],
@@ -242,7 +243,7 @@ class _HomepageState extends State<Homepage> {
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         fontFamily: "Lato",
-                        fontSize: 24,
+                        fontSize: 20,
                       ),),
                     GestureDetector(
 
@@ -252,7 +253,7 @@ class _HomepageState extends State<Homepage> {
                           "View All >",
                           style: TextStyle(
                             fontFamily: "Lato",
-                            fontSize: 18,
+                            fontSize: 14,
                             color: Colors.grey.shade400
                           ),
                         ),
@@ -275,7 +276,7 @@ class _HomepageState extends State<Homepage> {
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         fontFamily: "Lato",
-                        fontSize: 24,
+                        fontSize: 20,
                       ),),
                     GestureDetector(
 
@@ -285,7 +286,7 @@ class _HomepageState extends State<Homepage> {
                           "View All >",
                           style: TextStyle(
                               fontFamily: "Lato",
-                              fontSize: 18,
+                              fontSize: 14,
                               color: Colors.grey.shade400
                           ),
                         ),

@@ -12,190 +12,67 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
-    final double statusbarHeight = MediaQuery.of(context).padding.top;
-
     return Scaffold(
-        key: _scaffoldKey,
-        drawer: new Drawer(
-          child: ListView(
-            padding: EdgeInsets.zero,
-            children: [
-              const DrawerHeader(
-                  decoration: BoxDecoration(
-                    color: Colors.blue,
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.all(10.0),
-                    child: CircleAvatar(
-                      backgroundImage: NetworkImage(
-                          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMt6xMMLCNElmhMP07tuJ14Av7SmuI6XYv9g&usqp=CAU"),
-                      radius: 45.0,
-                    ),
-                  )),
-              listDrawer(
-                data1: 'Ishita Kapoor',
-                data2: Icons.supervisor_account,
-              ),
-              Divider(
-                height: 1.0,
-                thickness: 1.0,
-                color: Color(0xffE9E9E9),
-                indent: 10.0,
-                endIndent: 10.0,
-              ),
-              listDrawer(
-                data1: 'Grade: 10',
-                data2: Icons.class_outlined,
-              ),
-              Divider(
-                height: 1.0,
-                thickness: 1.0,
-                color: Color(0xffE9E9E9),
-                indent: 10.0,
-                endIndent: 10.0,
-              ),
-              listDrawer(
-                  data1: 'ishitakapoor12612@gmail.com',
-                  data2: Icons.email_outlined),
-              Divider(
-                height: 1.0,
-                thickness: 1.0,
-                color: Color(0xffE9E9E9),
-                indent: 10.0,
-                endIndent: 10.0,
-              ),
-              listDrawer(
-                data1: 'FAQ',
-                data2: Icons.question_answer_sharp,
-              ),
-              Divider(
-                height: 1.0,
-                thickness: 1.0,
-                color: Color(0xffE9E9E9),
-                indent: 10.0,
-                endIndent: 10.0,
-              ),
-              listDrawer(
-                data1: 'Contact Us',
-                data2: Icons.contact_support,
-              ),
-              Divider(
-                height: 1.0,
-                thickness: 1.0,
-                color: Color(0xffE9E9E9),
-                indent: 10.0,
-                endIndent: 10.0,
-              ),
-              listDrawer(
-                data1: 'Settings',
-                data2: Icons.settings,
-              ),
-              Divider(
-                height: 1.0,
-                thickness: 1.0,
-                color: Color(0xffE9E9E9),
-                indent: 10.0,
-                endIndent: 10.0,
-              ),
-              listDrawer(
-                data1: 'Rate Us',
-                data2: Icons.star_rate,
-              ),
-              Divider(
-                height: 1.0,
-                thickness: 1.0,
-                color: Color(0xffE9E9E9),
-                indent: 10.0,
-                endIndent: 10.0,
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Text(
-                    '*T&C Apply',
-                    style: TextStyle(
-                      fontFamily: 'Poppins',
-                      color: Colors.grey,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-        appBar: new AppBar(
-          title: Text('Hello there!'),
-          leading: new IconButton(
-            icon: new Icon(Icons.account_circle_outlined),
-            onPressed: () => _scaffoldKey.currentState!.openDrawer(),
-          ),
-        ),
-        body: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Card(
-                  color: Color(0xffF3F8FD),
-                  elevation: 4.0,
-                  child: Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Text(
-                      '"Life is a constant journey of trying to open your eyes. I’m just begining my journey, and my eyes aren’t fully open yet."',
-                      style: TextStyle(
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w600,
-                        fontSize: 14.0,
-                        color: Colors.blue,
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        color: Color(0xff19786A),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            Container(
+              height: MediaQuery.of(context).size.height / 3.3,
+              width: MediaQuery.of(context).size.width,
+              // decoration: BoxDecoration(
+              //   color: Color(0xff19786A),
+              //   image: DecorationImage(
+              //     image: AssetImage(category),
+              //     fit: BoxFit.cover,
+              //   ),
+              // ),
+            ),
+            Expanded(
+              child: Container(
+                height: MediaQuery.of(context).size.height / 2,
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                    borderRadius:
+                        BorderRadius.only(topLeft: Radius.circular(40)),
+                    color: Colors.white),
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            left: 30.0, right: 30.0, top: 40, bottom: 10),
+                        child: Align(
+                          alignment: Alignment.topLeft,
+                          child: Text(
+                            "Categories",
+                            style: TextStyle(
+                              fontFamily: "Lato",
+                              fontWeight: FontWeight.w600,
+                              fontSize: 24,
+                            ),
+                            textAlign: TextAlign.left,
+                          ),
+                        ),
                       ),
-                    ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: PlaceStaggeredGridView(),
+                      ),
+                    ],
                   ),
                 ),
               ),
-              // dashboardUI(),
-              PlaceStaggeredGridView(),
-
-              // navbar(),
-            ],
-          ),
+            )
+          ],
         ),
-      
-    );
-  }
-}
-
-class listDrawer extends StatelessWidget {
-  const listDrawer({Key? key, this.data1, required this.data2})
-      : super(key: key);
-
-  final data1;
-  final IconData data2;
-
-  @override
-  Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.center,
-      child: ListTile(
-        leading: Icon(
-          data2,
-          color: Colors.blue,
-        ),
-        title: Text(
-          '${data1}',
-          style: TextStyle(
-            fontFamily: 'Poppins',
-            fontSize: 14,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-        onTap: () {
-          Navigator.pop(context);
-        },
       ),
     );
   }

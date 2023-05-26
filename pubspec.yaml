@@ -76,14 +76,6 @@ flutter:
           - asset: assets/Lato-Bold.ttf
     assets:
       - assets/
-      - assets/images/
-      - assets/images/comingsoon.jpg
-      - assets/images/class.png
-      - assets/images/subject.png
-      - assets/images/Science.png
-      - assets/images/maths.png
-      - assets/pdf/
-      - assets/BEEP.wav
-      - assets/tactile/
+
 
 

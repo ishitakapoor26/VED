@@ -4,6 +4,7 @@ import 'package:imagine_cup_software/place.dart';
 import 'package:imagine_cup_software/read/pdfSelect.dart';
 import 'package:imagine_cup_software/test_yourself/start.dart';
 import 'package:flutter/material.dart';
+import 'package:mongo_dart/mongo_dart.dart';
 
 // import 'Vibration/SquareLevel1.dart';
 import 'concepts/concepts.dart';
@@ -42,52 +43,37 @@ class PlaceItem extends StatelessWidget {
       onTap: () => {onClick(place.title)},
       child: Container(
         height: place.height,
-        alignment: Alignment.bottomLeft,
+        // alignment: Alignment.bottomLeft,
         decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey,
-              offset: Offset(2.0, 2.0), //(x,y)
-              blurRadius: 3.0,
-            ),
-          ],
+          // boxShadow: [
+          //   BoxShadow(
+          //     color: Colors.grey,
+          //     offset: Offset(2.0, 2.0), //(x,y)
+          //     blurRadius: 3.0,
+          //   ),
+          // ],
           borderRadius: BorderRadius.circular(14),
-          gradient: LinearGradient(
-            colors: [Color(0xffC9E9FF), Color(0xffA4DAFF), Color(0xff53B9FF)],
-            // begin: const FractionalOffset(0.0, 0.0),
-            // end: const FractionalOffset(0.5, 0.0),
-            stops: [0.0, 0.3, 0.7],
-            begin: Alignment(-1.0, 0.0),
-            end: Alignment(1.0, 0.0),
-            // colors: [],
-            // stops: [],
-            transform: GradientRotation(math.pi / 4),
-          ),
+          color: place.color,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
             Align(
-              alignment: Alignment.topCenter,
-              child: Image.asset(place.imageUrl),
-            ),
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
-              child: Align(
-                alignment: Alignment.center,
-                child: Text(
-                  place.title,
-                  style: TextStyle(
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w600,
-                    fontSize: 16,
-                    color: Colors.white,
-                  ),
-                  textAlign: TextAlign.center,
+              alignment: Alignment.topLeft,
+              child: Text(
+                place.title,
+                style: TextStyle(
+                  fontFamily: 'Lato',
+                  fontWeight: FontWeight.w600,
+                  fontSize: 14,
                 ),
+                textAlign: TextAlign.center,
               ),
+            ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Image.asset(place.imageUrl),
             ),
           ],
         ),
