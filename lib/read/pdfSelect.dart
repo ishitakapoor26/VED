@@ -53,7 +53,7 @@ class _PdfSelectState extends State<PdfSelect> {
           leading: new IconButton(
             icon: new Icon(Icons.arrow_back),
             onPressed: () {
-              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=> Dashboard()));
+              Navigator.of(context).pop();
             },
           ),
           centerTitle: true,

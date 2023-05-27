@@ -1,5 +1,5 @@
 import '../Widget.dart';
-import 'package:imagine_cup_software/place_staggered_gridview.dart';
+import 'package:imagine_cup_software/Dashboard/place_staggered_gridview.dart';
 import 'package:flutter/material.dart';
 
 import 'package:imagine_cup_software/Dashboard/dashboardUI.dart';
@@ -24,15 +24,27 @@ class _DashboardState extends State<Dashboard> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Container(
-              height: MediaQuery.of(context).size.height / 3.3,
-              width: MediaQuery.of(context).size.width,
-              // decoration: BoxDecoration(
-              //   color: Color(0xff19786A),
-              //   image: DecorationImage(
-              //     image: AssetImage(category),
-              //     fit: BoxFit.cover,
-              //   ),
-              // ),
+              // height: MediaQuery.of(context).size.height,
+              // width: MediaQuery.of(context).size.width,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20.0,),
+                    child: Text("Choose.\nFilter.\nLearn.\nPractice.\nApply.",
+                    style: TextStyle(
+                      fontSize: 28,
+                      fontWeight: FontWeight.w700,
+                      fontFamily: "Lato",
+                      color: Colors.white,
+                      letterSpacing: 0.6
+                    ),),
+                  ),
+                  Image.asset("assets/cute.png",
+                  width: MediaQuery.of(context).size.width/1.5,
+                  height: MediaQuery.of(context).size.height/3.25,)
+                ],
+              ),
             ),
             Expanded(
               child: Container(
