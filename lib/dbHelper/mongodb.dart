@@ -14,4 +14,11 @@ class MongoDatabase{
    print(status);
    userCollection =db.collection(USER_COLLECTION);
    print(await userCollection.find().toList());
- }}
+ }
+
+ static Future<List<Map<String, dynamic>>> getData() async{
+   final arrData= await userCollection.find().toList();
+   return arrData;
+ }
+
+}

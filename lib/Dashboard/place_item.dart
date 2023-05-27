@@ -24,7 +24,7 @@ class PlaceItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     void onClick(String title) {
-      if (title == 'Concepts & Explanations') {
+      if (title == 'Concepts') {
         Navigator.of(context)
             .push(MaterialPageRoute(builder: (context) => lst[1]));
       } else if (title == 'Study Material') {
@@ -42,7 +42,7 @@ class PlaceItem extends StatelessWidget {
     return GestureDetector(
       onTap: () => {onClick(place.title)},
       child: Container(
-        height: place.height,
+        height: MediaQuery.of(context).size.height/place.height,
         // alignment: Alignment.bottomLeft,
         decoration: BoxDecoration(
           // boxShadow: [
