@@ -1,11 +1,6 @@
 import 'package:mongo_dart/mongo_dart.dart';
 import 'dart:convert';
 
-// chatModel mongoDbModelFromJson(String str)=>
-//     chatModel.fromJson(json.decode(str));
-
-// String mongoDbModelToJson(chatModel data)=> json.encode(data.toJson());
-
 class chatModel {
   chatModel({
     required this.id,

@@ -1,11 +1,6 @@
 import 'package:mongo_dart/mongo_dart.dart';
 import 'dart:convert';
 
-// conceptModel mongoDbModelFromJson(String str)=>
-//     conceptModel.fromJson(json.decode(str));
-
-// String mongoDbModelToJson(conceptModel data)=> json.encode(data.toJson());
-
 class conceptModel {
 
   conceptModel({

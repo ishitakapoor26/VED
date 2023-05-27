@@ -1,11 +1,6 @@
 import 'package:mongo_dart/mongo_dart.dart';
 import 'dart:convert';
 
-// readModel mongoDbModelFromJson(String str)=>
-//     readModel.fromJson(json.decode(str));
-
-// String mongoDbModelToJson(readModel data)=> json.encode(data.toJson());
-
 class readModel {
 
   readModel({
