@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:imagine_cup_software/Dashboard/dashboard.dart';
 
+import '../dbHelper/mongodb.dart';
+import '../dbHelper/readModel.dart';
+
 class PdfSelect extends StatefulWidget {
   const PdfSelect({Key? key}) : super(key: key);
 
@@ -11,14 +14,6 @@ class PdfSelect extends StatefulWidget {
 }
 
 class _PdfSelectState extends State<PdfSelect> {
-  List<String> chapters = [
-    "Chapter 1",
-    "Chapter 2",
-    "Chapter 3",
-    "Chapter 4",
-    "Chapter 5",
-    "Chapter 6",
-  ];
   List<String> chapterName = [
     "Shapes and Space",
     "Numbers One to\nNine",
@@ -45,129 +40,207 @@ class _PdfSelectState extends State<PdfSelect> {
     "https://w7.pngwing.com/pngs/359/349/png-transparent-analog-clock-illustration-time-management-work-learning-mathematics-part-time-problem-solving-study-skills.png"
   ];
 
+  Widget displayCard(int index, readModel data) {
+    return GestureDetector(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Card(
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(6)),
+              side: BorderSide(
+                  color: Color(0xffFFA800),
+                  width: 0.8
+              )
+          ),
+          elevation: 5,
+          color: Colors.white,
+          child: Column(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(18.0),
+                child: Container(
+                  height: MediaQuery.of(context).size.height / 8,
+                  width: MediaQuery.of(context).size.width/0.8,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 10.0),
+                          child: Image.network("${data.image}",
+                            width: MediaQuery.of(context).size.width/3,
+                            height: MediaQuery.of(context).size.height/3),
+                        ),
+                      ),
+
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.all(15.0),
+                          child: Text("${data.title}",
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                              fontFamily: "Lato",
+                            ),
+                            maxLines: 4,),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
+            ],
+          ),
+        ),
+      ),
+      onTap: () => onTap(index),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          leading: new IconButton(
-            icon: new Icon(Icons.arrow_back),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-          ),
-          centerTitle: true,
-          title: Text("Study Material"),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Study Material",
+          style: TextStyle(
+              fontFamily: "Lato",
+              fontWeight: FontWeight.w600,
+              fontSize: 22
+          ),),
+        elevation: 0,
+        backgroundColor: Color(0xff19786A),
+        centerTitle: true,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          icon: Icon(Icons.arrow_back),
         ),
-        body: Padding(
-          padding: const EdgeInsets.only(top: 20, left: 10, right: 10),
-          child: Container(
-            child: GridView.count(
-                crossAxisCount: 2,
-                crossAxisSpacing: 20,
-                mainAxisSpacing: 40,
-                padding: EdgeInsets.all(10.0),
-                children: [
-                  for (int i = 0; i < chapters.length; i++)
-                    Tile(
-                      chap: chapters[i],
-                      pdfPath: pdfList[i],
-                      chapName: chapterName[i],
-                      imgUrl: imgUrl[i],
-                    )
-                ]),
-          ),
+      ),
+      body: SafeArea(
+        child: FutureBuilder(
+          future: MongoDatabase.getData(1),
+          builder: (context, AsyncSnapshot snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            } else {
+              if (snapshot.hasData) {
+                var totalData = snapshot.data.length;
+                print("Total Data " + totalData.toString());
+                return Container(
+                  color: Color(0xff19786A),
+                  child: Column(
+                    children: <Widget>[
+                      Container(
+                        color: Color(0xff1786A),
+                        height: MediaQuery.of(context).size.height / 6,
+                        width: MediaQuery.of(context).size.width,
+                        child: Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: TextField(
+                                  style: TextStyle(
+                                    letterSpacing: 0.5,
+                                    color: Colors.grey.shade100,
+                                    fontFamily: "Lato",
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                  decoration: InputDecoration(
+                                    filled: true,
+                                    fillColor:Colors.grey.shade200,
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(10.0),
+                                      borderSide: BorderSide.none,
+                                    ),
+                                    hintText: "Search Study Material",
+                                    suffixIcon: Padding(
+                                      padding: const EdgeInsets.only(right: 8.0),
+                                      child: Container(
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(5),
+                                            color: Color(0xffFFA800),
+                                          ),
+                                          child: Icon(Icons.search,)),
+                                    ),
+                                    suffixIconColor: Colors.black,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 25.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(18)),
+                              color: Colors.white,
+                            ),
+                            child: Column(
+                              children: <Widget>[
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 35.0, left: 20),
+                                  child: Align(
+                                    alignment: Alignment.topLeft,
+                                    child: Text("Study Materials",style:
+                                    TextStyle(
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.w600,
+                                      fontFamily: "Lato",
+                                    ),
+                                      textAlign: TextAlign.left),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(top: 25.0),
+                                    child: ListView.builder(
+                                        itemCount: snapshot.data.length,
+                                        itemBuilder: (context, index) {
+                                          return displayCard(
+                                              index,
+                                              readModel.fromJson(
+                                                  snapshot.data[index]));
+                                        }),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              } else {
+                return Center(
+                  child: Text("Unable to connect to the Internet.\nPlease find a stable network connection.",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontFamily: "Lato",
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400
+                    ),),
+                );
+              }
+            }
+          },
         ),
       ),
     );
   }
-}
 
-class Tile extends StatelessWidget {
-  String chap;
-  String pdfPath;
-  String chapName;
-  String imgUrl;
-  Tile(
-      {required this.chap,
-      required this.pdfPath,
-      required this.chapName,
-      required this.imgUrl});
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(children: [
-      Positioned(
-        // bottom: 2,
-        // left: 2,
-        // right: 2,
-        // top: 2,
-        child: Container(
-          decoration: BoxDecoration(
-              color: Colors.blueAccent,
-              borderRadius: BorderRadius.circular(10)),
-        ),
-      ),
-      Positioned(
-        bottom: 70,
-        left: 5,
-        right: 5,
-        top: 5,
-        child: InkWell(
-          onTap: () {
-            Navigator.of(context).push(MaterialPageRoute(
-                builder: (BuildContext) => PdfView(
-                      pdfPath: pdfPath,
-                      title: chap,
-                    )));
-          },
-          child: Container(
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: NetworkImage(imgUrl),
-                ),
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(5)),
-          ),
-        ),
-      ),
-      Positioned(
-          bottom: 5,
-          left: 25,
-          child: Column(
-            children: [
-              Text(
-                chap,
-                style: GoogleFonts.poppins(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.white),
-              ),
-              Text(
-                chapName,
-                style: GoogleFonts.poppins(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.white),
-              ),
-            ],
-          )),
-      // Positioned(
-      //   bottom: 10,
-      //   left: 30,
-      //   child: Center(
-      //     child: Text(
-      //       chapName,
-      //       style: GoogleFonts.poppins(
-      //           fontSize: 12, fontWeight: FontWeight.w500, color: Colors.white),
-      //     ),
-      //   ),
-      // ),
-    ]);
+  onTap(int index) {
+    Navigator.push(context, MaterialPageRoute(builder: (context)=>PdfView(pdfPath: pdfList[index], title: chapterName[index])));
   }
 }
 
-void main() {
-  runApp(PdfSelect(),
-  );
-}
