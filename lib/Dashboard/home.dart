@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:imagine_cup_software/chat/tutorList.dart';
 
 import '../concepts/concepts.dart';
 import '../read/pdfSelect.dart';
@@ -19,7 +20,7 @@ class _HomeState extends State<Home> {
     Homepage(),
     Dashboard(),
     Concepts(),
-    StartScreen(),
+    chatList(),
   ];
   int _currentIndex=0;
   

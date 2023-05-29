@@ -7,26 +7,22 @@ class chatModel {
     required this.name,
     required this.subject,
     required this.rating,
-    required this.category,
     required this.experience,
     required this.about,
     required this.chatModelClass,
     required this.qualification,
     required this.contact,
-    required this.profile,
   });
 
   ObjectId id;
   String name;
   String subject;
   String rating;
-  String category;
   String experience;
   String about;
   String chatModelClass;
   String qualification;
   String contact;
-  String profile;
 
 
   factory chatModel.fromJson(Map<String,dynamic> json)=> chatModel(
@@ -34,9 +30,7 @@ class chatModel {
     name: json["name"],
     about: json["about"],
     subject: json["subject"],
-    profile: json["profile"],
     rating: json["rating"],
-    category: json["category"],
     experience: json["experience"],
     chatModelClass: json["chatModelClass"],
     qualification: json["qualification"],
@@ -47,10 +41,8 @@ class chatModel {
     "_id":id,
     "name":name,
     "about": about,
-    "profile":profile,
     "subject":subject,
     "rating":rating,
-    "category":category,
     "experience":experience,
     "chatModelClass":chatModelClass,
     "qualification":qualification,

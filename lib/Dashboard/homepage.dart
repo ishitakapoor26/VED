@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:imagine_cup_software/Dashboard/homepageSlider.dart';
 
 import '../concepts/concepts.dart';
 import '../read/pdfSelect.dart';
@@ -258,14 +259,14 @@ class _HomepageState extends State<Homepage> {
                           ),
                         ),
                       ),
+                      onTap: ()=> Concepts(),
                     )
                   ],
                 ),
               ),
-              Row(
-                children: <Widget>[
-
-                ],
+              Container(
+                height: MediaQuery.of(context).size.height/3.5,
+                child: popularConcepts(),
               ),
               Padding(
                 padding: const EdgeInsets.all(12.0),
@@ -291,15 +292,15 @@ class _HomepageState extends State<Homepage> {
                           ),
                         ),
                       ),
+                      onTap: ()=> PdfSelect() ,
                     )
                   ],
                 ),
               ),
-              Row(
-                children: <Widget>[
-
-                ],
-              )
+              Container(
+                height: MediaQuery.of(context).size.height/3.5,
+                child: exploreStudy(),
+              ),
             ],
           ),
         ),
