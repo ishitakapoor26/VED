@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:imagine_cup_software/chat/tutorData.dart';
 import 'package:imagine_cup_software/dbHelper/mongodb.dart';
 
 import '../dbHelper/chatModel.dart';
@@ -24,12 +25,6 @@ class _chatListState extends State<chatList> {
         elevation: 0,
         backgroundColor: Color(0xff19786A),
         centerTitle: true,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          icon: Icon(Icons.arrow_back),
-        ),
       ),
       body: SafeArea(
         child: FutureBuilder(
@@ -129,87 +124,91 @@ class _chatListState extends State<chatList> {
   Widget displayCard(chatModel data) {
     return Padding(
       padding: const EdgeInsets.all(6.0),
-      child: Card(
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(6)),
-            side: BorderSide(
-                color: Color(0xffFFA800),
-                width: 0.3
-            )
-        ),
-        elevation: 6,
-        child: Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: CircleAvatar(
-                  radius: 45,
-                  backgroundColor: Color(0xff19876A),
-                  child: Image.asset("assets/cute.png",
-                  width: MediaQuery.of(context).size.width/5,
-                  height: MediaQuery.of(context).size.height/5,),
-                ),
-              ),
-              Column(
-                children: [
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text("${data.name}",
-                    style: TextStyle(
-                      fontFamily: "Lato",
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600
-                    ),
-                    textAlign: TextAlign.left,),
-                  ),
-                  Row(
-                    children: [
-                      Text("Rating: ",
-                          textAlign: TextAlign.left),
-                      Text("${data.rating} ", textAlign: TextAlign.left),
-                      Icon(Icons.star,color: Color(0xffFFA800), size: 20,)
-                    ],
-                  ),
-                  Container(
-                    child: Text("${data.subject}",textAlign: TextAlign.left),
-                  )
-                ],
-              ),
-            Column(
-              children: [
+      child: GestureDetector(
+        child: Card(
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(6)),
+              side: BorderSide(
+                  color: Color(0xffFFA800),
+                  width: 0.3
+              )
+          ),
+          elevation: 6,
+          child: Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: CircleAvatar(
-                    backgroundColor: Colors.white,
-                    child: IconButton(
-                      color: Color(0xff19876A),
-                        onPressed: (){},
-                        icon: Icon(Icons.phone)
+                  child: Container(
+                    width: MediaQuery.of(context).size.width/5,
+                    height: MediaQuery.of(context).size.height/9,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(50)),
+                      image: DecorationImage(
+                        image: NetworkImage("${data.Profile}"),
+                      )
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: ElevatedButton(
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(Color(0xffFFA800))
-                    ),
-                      onPressed: (){},
-                      child: Text("View Profile",
+                Column(
+                  children: [
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text("${data.name}",
                       style: TextStyle(
-                        color: Colors.black
-                      ),)
-                  ),
+                        fontFamily: "Lato",
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600
+                      ),
+                      textAlign: TextAlign.left,),
+                    ),
+                    Row(
+                      children: [
+                        Text("Rating: ",
+                            textAlign: TextAlign.left),
+                        Text("${data.rating} ", textAlign: TextAlign.left),
+                        Icon(Icons.star,color: Color(0xffFFA800), size: 20,)
+                      ],
+                    ),
+                    Container(
+                      child: Text("${data.subject}",textAlign: TextAlign.left),
+                    )
+                  ],
                 ),
+              Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: CircleAvatar(
+                      backgroundColor: Colors.white,
+                      child: IconButton(
+                        color: Color(0xff19876A),
+                          onPressed: (){},
+                          icon: Icon(Icons.phone)
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+
               ],
             ),
-
-            ],
           ),
         ),
+        onTap: (){
+          showModalBottomSheet(
+              isScrollControlled: true,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(20)
+                  )
+              ),
+              context: context,
+              builder: (context)=> tutorDetails(data.name,data.chatModelClass, data.experience, data.rating, data.subject, data.Profile, data.about)
+          );
+        },
       ),
     );
   }

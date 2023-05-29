@@ -41,8 +41,9 @@ class _DashboardState extends State<Dashboard> {
                     ),),
                   ),
                   Image.asset("assets/cute.png",
-                  width: MediaQuery.of(context).size.width/1.5,
-                  height: MediaQuery.of(context).size.height/3.25,)
+                  width: MediaQuery.of(context).size.width/1.7,
+                  height: MediaQuery.of(context).size.height/3.25,
+                  fit: BoxFit.cover,)
                 ],
               ),
             ),
