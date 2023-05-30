@@ -1,7 +1,7 @@
 {
   "appTitle": "E-Drishti",
   "dashboardQuote": "Life is a constant journey of trying to open your eyes. I’m just beginning my journey, and my eyes aren’t fully open yet.\n",
-  "greeting": "Hello There!",
+  "greeting": "Hello,",
   "concept": "Concepts & Explanations",
   "study": "Study Material",
   "test": "Test Yourself",
@@ -12,5 +12,22 @@
   "contactus": "Contact Us",
   "rateus": "Rate Us",
   "settings": "Settings",
-  "tnc": "*T&C Apply"
+  "tnc": "*T&C Apply",
+  "sci": "Science",
+  "tech": "Technology",
+  "algebra": "Algebra",
+  "geometry": "Geometry",
+  "dashText": "Find Your Favourite\nCourse To Study",
+  "tutorsearch": "Search Tutors",
+  "search": "Search",
+  "coursesearch": "Search Course Modules",
+  "coursecategory": "Course Categories",
+  "home": "Home",
+  "category": "Category",
+  "bookmark": "Bookmark",
+  "chat": "Chat",
+  "popconcept": "Popular Concepts",
+  "exploreMaterial": "Explore Study Material",
+  "viewall": "View All >>"
+
   }

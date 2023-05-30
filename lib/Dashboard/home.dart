@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:imagine_cup_software/chat/tutorList.dart';
 
+import '../classes/language_constants.dart';
 import '../concepts/concepts.dart';
 import '../read/pdfSelect.dart';
 import '../test_yourself/start.dart';
@@ -38,25 +39,25 @@ class _HomeState extends State<Home> {
             icon: Icon(Icons.home,
               // color: Colors.grey,
             ),
-            label: "Home",
+            label: translation(context).home,
           ),
           BottomNavigationBarItem(
               icon: Icon(Icons.category,
                 // color: Colors.grey,
               ),
-              label: "Category"
+              label: translation(context).category
           ),
           BottomNavigationBarItem(
               icon: Icon(Icons.bookmark,
                 // color: Colors.grey,
               ),
-              label: "Bookmark"
+              label: translation(context).bookmark
           ),
           BottomNavigationBarItem(
               icon: Icon(Icons.chat,
                 // color: Colors.grey,
               ),
-              label: "Chat"
+              label: translation(context).chat
           ),
         ],
         onTap: (index){

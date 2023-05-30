@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:imagine_cup_software/chat/tutorData.dart';
 import 'package:imagine_cup_software/dbHelper/mongodb.dart';
 
+import '../classes/language_constants.dart';
 import '../dbHelper/chatModel.dart';
 
 class chatList extends StatefulWidget {
@@ -16,7 +17,7 @@ class _chatListState extends State<chatList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Contact Tutors",
+        title: Text(translation(context).tutorsearch,
           style: TextStyle(
               fontFamily: "Lato",
               fontWeight: FontWeight.w600,

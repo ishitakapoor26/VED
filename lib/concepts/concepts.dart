@@ -137,7 +137,7 @@ class _ConceptsState extends State<Concepts> {
                                       borderRadius: BorderRadius.circular(10.0),
                                       borderSide: BorderSide.none,
                                     ),
-                                    hintText: "Search Course Modules",
+                                    hintText: translation(context).coursesearch,
                                     suffixIcon: Padding(
                                       padding: const EdgeInsets.only(right: 8.0),
                                       child: Container(
