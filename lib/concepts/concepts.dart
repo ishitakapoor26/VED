@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:imagine_cup_software/dbHelper/conceptModel.dart';
 import 'package:imagine_cup_software/dbHelper/mongodb.dart';
 
+import '../classes/language_constants.dart';
 import '../Dashboard/dashboard.dart';
 
 class Concepts extends StatefulWidget {

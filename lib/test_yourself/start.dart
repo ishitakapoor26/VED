@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import '../classes/language_constants.dart';
 import '../Dashboard/dashboard.dart';
 import 'test_yourself.dart';
 class StartScreen extends StatelessWidget {
@@ -17,7 +18,7 @@ class StartScreen extends StatelessWidget {
           },
 
         ),
-        title: Text("Test Yourself"),
+        title: Text(translation(context).test),
         centerTitle: true,
       ),
       backgroundColor: Colors.white,

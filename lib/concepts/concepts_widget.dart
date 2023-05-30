@@ -3,6 +3,8 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:imagine_cup_software/concepts/concepts.dart';
 import 'package:flutter/material.dart';
 
+import '../classes/language_constants.dart';
+
 class Concept_Widget extends StatelessWidget {
   Concept_Widget(
       {Key? key,
@@ -20,14 +22,14 @@ class Concept_Widget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: new AppBar(
-        title: Text('Concepts & Explanation'),
+      appBar: AppBar(
+        title: Text(translation(context).concept),
         elevation: 0,
-        leading: new IconButton(
-          icon: new Icon(Icons.arrow_back),
+        leading: IconButton(
           onPressed: () {
             Navigator.of(context).pop();
           },
+          icon: const Icon(Icons.arrow_back),
         ),
         backgroundColor: Color(0xff19876A),
         centerTitle: true,

@@ -9,10 +9,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class PlaceStaggeredGridView extends StatelessWidget {
-  final placeList = Place.generatePlaces();
+
 
   @override
   Widget build(BuildContext context) {
+    final placeList = Place.generatePlaces(context);
     return Container(
       padding: EdgeInsets.all(20),
       child: StaggeredGridView.countBuilder(
