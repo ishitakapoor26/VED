@@ -259,7 +259,7 @@ class _HomepageState extends State<Homepage> {
                           ),
                         ),
                       ),
-                      onTap: ()=> Concepts(),
+                      onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (context)=>Concepts())),
                     )
                   ],
                 ),
@@ -269,7 +269,7 @@ class _HomepageState extends State<Homepage> {
                 child: popularConcepts(),
               ),
               Padding(
-                padding: const EdgeInsets.all(12.0),
+                padding: const EdgeInsets.all(9.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -292,7 +292,7 @@ class _HomepageState extends State<Homepage> {
                           ),
                         ),
                       ),
-                      onTap: ()=> PdfSelect() ,
+                      onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (context)=>PdfSelect())) ,
                     )
                   ],
                 ),

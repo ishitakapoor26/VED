@@ -33,7 +33,6 @@ class _PdfViewState extends State<PdfView> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     loadAsset(widget.pdfPath);
   }
@@ -44,6 +43,7 @@ class _PdfViewState extends State<PdfView> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
           leading: new IconButton(
@@ -54,6 +54,7 @@ class _PdfViewState extends State<PdfView> {
           ),
           centerTitle: true,
           title: Text(widget.title),
+          backgroundColor: Color(0xff19876A),
         ),
         body: loading
             ? Center(child: CircularProgressIndicator())

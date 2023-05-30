@@ -4,24 +4,32 @@ import 'package:imagine_cup_software/concepts/concepts.dart';
 import 'package:flutter/material.dart';
 
 class Concept_Widget extends StatelessWidget {
-   Concept_Widget({Key? key, required this.title, required this.content, required this.image}) : super(key: key);
+  Concept_Widget(
+      {Key? key,
+      required this.title,
+      required this.description,
+      required this.image})
+      : super(key: key);
   // static AudioCache player = new AudioCache();
   final String title;
-  final String content;
+  final String description;
   final String image;
 
   final player = AudioPlayer();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: new AppBar(
         title: Text('Concepts & Explanation'),
+        elevation: 0,
         leading: new IconButton(
           icon: new Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=> Concepts()));
+            Navigator.of(context).pop();
           },
         ),
+        backgroundColor: Color(0xff19876A),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -30,58 +38,95 @@ class Concept_Widget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.only(top: 45.0,bottom: 12.0,left: 14.0),
-              child: Text(title,style: TextStyle(
-                fontSize: 27.0,
-                fontWeight: FontWeight.w600,
-                fontFamily: 'Poppins',
-              ),),
-            ),
-            Padding(
-              padding: const EdgeInsets.only( top: 30, left: 20.0, right: 20.0,bottom: 20),
-              child: Image.network(image,
+              padding: const EdgeInsets.all(25),
+              child: Image.network(
+                image,
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 32.0, left: 23, right: 23),
-              child: Text(content,style: TextStyle(
-                fontSize: 16.0,
-                fontWeight: FontWeight.w500,
-                fontFamily: 'Poppins',
-              ),),
+              padding:
+                  const EdgeInsets.all(20),
+              child: Text(
+                title,
+                style: TextStyle(
+                  fontSize: 27.0,
+                  fontWeight: FontWeight.w600,
+                  fontFamily: 'Lato',
+                ),
+              ),
             ),
-           SizedBox(
-             height: MediaQuery.of(context).size.height/15,
-           ),
-           Padding(
-             padding: const EdgeInsets.only(bottom: 20.0, left: 14, right: 14),
-             child: ElevatedButton(
-                    onPressed: () {
-                      if(title=='What is a Sine Graph?'){
-                        player.play(AssetSource('Sin.mp3'));
-                      }
-                      else if (title=='What is a Modulus Function Graph?'){
-                        const alarmAudioPath = "Mod x.mp3";
-                        player.play(AssetSource(alarmAudioPath));
-                      }
 
-                      },
-                    child: Text(
-                      'Understand the Concept Practically',
-                      style: TextStyle(
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w600,
-                        fontSize: 17.0,
-                        color: Colors.white,
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: Text(
+                description,
+                style: TextStyle(
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.w500,
+                  fontFamily: 'Lato',
+                ),
+              ),
+            ),
+            // SizedBox(
+            //   height: MediaQuery.of(context).size.height/15,
+            // ),
+            Padding(
+              padding: const EdgeInsets.only(top: 8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Container(
+                      width: MediaQuery.of(context).size.width/5,
+                      height: MediaQuery.of(context).size.height/15,
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        child: Icon(
+                          Icons.bookmark,
+                          color: Colors.white,
+                        ),
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Color(0xffFFA800),
+                            // minimumSize: Size.fromHeight(3)
+                        ),
                       ),
                     ),
-                  style: ElevatedButton.styleFrom(
-                    onPrimary: Colors.blue,
-                    minimumSize: const Size.fromHeight(58),
                   ),
+                  Padding(
+                    padding: const EdgeInsets.all(12),
+                    child: Container(
+                      width: MediaQuery.of(context).size.width/1.6,
+                      height: MediaQuery.of(context).size.height/15,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          if (title == 'Graphs: Understanding Sine Graph') {
+                            player.play(AssetSource('Sin.mp3'));
+                          } else if (title == 'What is a Modulus Function Graph?') {
+                            const alarmAudioPath = "Mod x.mp3";
+                            player.play(AssetSource(alarmAudioPath));
+                          }
+                        },
+                        child: Text(
+                          'Understand Practically',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontFamily: 'Lato',
+                            fontWeight: FontWeight.w600,
+                            fontSize: 18.0,
+                            color: Colors.white,
+                          ),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color(0xff19876A),
+                          // minimumSize: const Size.fromHeight(5),
+                        ),
+                      ),
+                    ),
                   ),
-           ),
-
+                ],
+              ),
+            ),
           ],
         ),
       ),

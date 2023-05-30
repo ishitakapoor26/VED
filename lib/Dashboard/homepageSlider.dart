@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:imagine_cup_software/concepts/concepts_widget.dart';
 import 'package:imagine_cup_software/dbHelper/conceptModel.dart';
 import 'package:imagine_cup_software/dbHelper/readModel.dart';
 
@@ -27,15 +28,13 @@ class _popularConceptsState extends State<popularConcepts> {
                 if (snapshot.hasData) {
                   var totalData = snapshot.data.length;
                   print("Total Data " + totalData.toString());
-                  return Expanded(
-                    child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: snapshot.data.length,
-                        itemBuilder: (context, index) {
-                          return displayCard(index,
-                              conceptModel.fromJson(snapshot.data[index]));
-                        }),
-                  );
+                  return ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: snapshot.data.length,
+                      itemBuilder: (context, index) {
+                        return displayCard(index,
+                            conceptModel.fromJson(snapshot.data[index]));
+                      });
                 } else {
                   return Center(
                     child: Text(
@@ -55,39 +54,44 @@ class _popularConceptsState extends State<popularConcepts> {
   }
 
   Widget displayCard(int index, conceptModel data) {
-    return Container(
-      width: MediaQuery.of(context).size.width / 2,
-      height: MediaQuery.of(context).size.height / 3.5,
-      child: Column(
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(5.0),
-            child: Card(
-              elevation: 3.5,
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Image.network(
-                  "${data.image}",
-                  width: MediaQuery.of(context).size.height / 3,
-                  height: MediaQuery.of(context).size.width / 3,
+    return GestureDetector(
+      child: Container(
+        width: MediaQuery.of(context).size.width / 2,
+        height: MediaQuery.of(context).size.height / 3.5,
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: Card(
+                elevation: 3.5,
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Image.network(
+                    "${data.image}",
+                    width: MediaQuery.of(context).size.height / 3,
+                    height: MediaQuery.of(context).size.width / 3,
+                  ),
                 ),
               ),
             ),
-          ),
 
-          Text(
-            "${data.title}",
-            overflow: TextOverflow.ellipsis,
-            style: TextStyle(
-              fontWeight: FontWeight.w500,
-              fontSize: 16,
-              fontFamily: "Lato",
+            Text(
+              "${data.title}",
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                fontWeight: FontWeight.w500,
+                fontSize: 16,
+                fontFamily: "Lato",
+              ),
+              textAlign: TextAlign.center,
+              maxLines: 3,
             ),
-            textAlign: TextAlign.center,
-            maxLines: 3,
-          ),
-        ],
+          ],
+        ),
       ),
+      onTap: (){
+        Navigator.of(context).push(MaterialPageRoute(builder: (context)=> Concept_Widget(title: data.title, description: data.description, image: data.image)));
+      },
     );
   }
 }
@@ -115,15 +119,13 @@ class _exploreStudyState extends State<exploreStudy> {
                 if (snapshot.hasData) {
                   var totalData = snapshot.data.length;
                   print("Total Data " + totalData.toString());
-                  return Expanded(
-                    child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: snapshot.data.length,
-                        itemBuilder: (context, index) {
-                          return displayCard(index,
-                              readModel.fromJson(snapshot.data[index]));
-                        }),
-                  );
+                  return ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: snapshot.data.length,
+                      itemBuilder: (context, index) {
+                        return displayCard(index,
+                            readModel.fromJson(snapshot.data[index]));
+                      });
                 } else {
                   return Center(
                     child: Text(

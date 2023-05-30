@@ -1,7 +1,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
+import 'package:imagine_cup_software/Dashboard/homepage.dart';
 import 'package:imagine_cup_software/hardware_connection/send_message.dart';
+import 'package:imagine_cup_software/onboardingScreens/onboardSecond.dart';
 
 import '../Dashboard/dashboard.dart';
 import 'connection.dart';
@@ -48,13 +50,15 @@ class Home extends StatelessWidget {
     return SafeArea(
         child: Scaffold(
           appBar: AppBar(
+            backgroundColor: Color(0xff19876A),
             leading: GestureDetector(
                 child: Icon(Icons.arrow_back),
                 onTap: (){
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> Dashboard()));
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>onboardSecond()));
                 },
             ),
             title: Text("Connection"),
+            centerTitle: true,
           ),
           body: SelectBondedDevicePage(
             onCahtPage: (device1) {

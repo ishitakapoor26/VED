@@ -29,11 +29,11 @@ class _ChatPageState extends State<ChatPage>
   List<int> flag= [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 
   bool get isConnected => connection != null && connection!.isConnected;
-  Color clickedColor = Colors.blue;
+  Color clickedColor = Color(0xffFFA800);
   bool isDisconnecting = false;
 
   void onClick(String message, Color color){
-    if(clickedColor==Colors.blue){
+    if(clickedColor==Color(0xffFFA800)){
       _sendMessage(message);
       setState(() {
         clickedColor= Colors.green;
@@ -42,7 +42,7 @@ class _ChatPageState extends State<ChatPage>
     else if(clickedColor==Colors.green){
       _sendMessage('$message$message');
       setState(() {
-        clickedColor= Colors.blue;
+        clickedColor= Color(0xffFFA800);
       });
     }
   }
@@ -99,7 +99,15 @@ class _ChatPageState extends State<ChatPage>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Practice'),
+        title: Text('Practice',
+        style: TextStyle(
+          fontSize: 18,
+          fontFamily: "Lato",
+          fontWeight: FontWeight.w600
+        ),
+        ),
+        backgroundColor: Color(0xff19876A),
+        centerTitle: true,
       ),
       body: SafeArea(
         child: Padding(
@@ -173,7 +181,7 @@ class _ChatPageState extends State<ChatPage>
                             color: Colors.white
                           ),),
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.blue
+                          backgroundColor: Color(0xff19876A)
                         ),
                       ),
                   ElevatedButton(
@@ -189,7 +197,7 @@ class _ChatPageState extends State<ChatPage>
                           color: Colors.white
                       ),),
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blue
+                        backgroundColor: Color(0xff19876A)
                     ),
                   ),
                     ],
@@ -224,7 +232,7 @@ class _ChatPageState extends State<ChatPage>
         },
         child: Text(""),
         style: ElevatedButton.styleFrom(
-          backgroundColor: flag[x]==0? Colors.blue:Colors.green,
+          backgroundColor: flag[x]==0? Color(0xffFFA800):Colors.green,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(50),
           ),

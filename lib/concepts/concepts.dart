@@ -69,46 +69,11 @@ class _ConceptsState extends State<Concepts> {
           ),
         ),
       ),
-      onTap: () => onTap(index),
+      onTap: () => {
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>Concept_Widget(title: data.title, description: data.description, image: data.image))),
+      },
     );
-  }
 
-  void onTap(int index) {
-    if (index == 0) {
-      Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => Concept_Widget(
-              title: 'What is a Square?',
-              content:
-                  'A flat geometric figure that has four equal sides and four right angles.\n\nRelate it to something formed with four equal or roughly equal sides and four right angles the squares of a checkerboard.',
-              image:
-                  'https://www.creatopy.com/blog/wp-content/uploads/2020/07/Geometric-shapes-in-design-1024x525.png')));
-    } else if (index == 1) {
-      Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => Concept_Widget(
-              title: 'What is a Sine Graph?',
-              content:
-                  'The sin graph is a visual representation of the sine function for a given range of angles.\nThe horizontal axis of a trigonometric graph represents the angle, usually written as θ, and the y-axis is the sine function of that angle.\nThe graph does not start at the origin but it does pass through it.',
-              image:
-                  'https://www.varsitytutors.com/assets/vt-hotmath-legacy/hotmath_help/topics/graphing-sine-function/sine-graph.gif')));
-    } else if (index == 2) {
-      Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => Concept_Widget(
-              title: 'What is a Modulus Function Graph?',
-              content:
-                  'A modulus function gives the magnitude of a number irrespective of its sign.\nIt is also called the absolute value function.\nIn mathematics, the modulus of a real number x is given by the modulus function, denoted by |x|.\nIt gives the non-negative value of x.',
-              image:
-                  'https://qph.cf2.quoracdn.net/main-qimg-e5315cf2f84aa1cc9fe9598c448f7cfa')));
-    } else if (index == 3) {
-      // Navigator.of(context).push(MaterialPageRoute(builder: (context)=> ScienceObject()));
-    } else if (index == 4) {
-      Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => Concept_Widget(
-              title: 'Understanding Perimeter',
-              content:
-                  'Perimeter is the distance around the outside of a shape.',
-              image:
-                  'https://i.pinimg.com/736x/d4/48/0a/d4480a5d14f48f3fd65775a0f3c3cb39.jpg')));
-    }
   }
 
   @override

@@ -7,6 +7,11 @@ import '../Dashboard/home.dart';
 class onboardSecond extends StatelessWidget {
   const onboardSecond({Key? key}) : super(key: key);
 
+  Future<void> signInWithGoogle() async{
+
+  //  Create an instance of the firebase auth and google signin
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
