@@ -2,6 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:imagine_cup_software/Dashboard/homepageSlider.dart';
+import 'package:imagine_cup_software/Dashboard/profile.dart';
+import 'package:imagine_cup_software/hardware_connection/main.dart';
+import 'package:page_transition/page_transition.dart';
 
 import '../concepts/concepts.dart';
 import '../read/pdfSelect.dart';
@@ -48,13 +51,6 @@ class _HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      endDrawer: Drawer(
-        child: ListView(
-          children: <Widget>[
-
-          ],
-        ),
-      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -83,6 +79,9 @@ class _HomepageState extends State<Homepage> {
                           child: getProfileImage(),
                         ),
                       ),
+                      onTap: (){
+                        Navigator.push(context, PageTransition(child: profilePage(auth.currentUser!.photoURL, auth.currentUser!.displayName) , type: PageTransitionType.rightToLeft));
+                      },
                     )
                   ),
                 ],

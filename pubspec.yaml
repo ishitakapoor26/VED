@@ -52,7 +52,7 @@ dependencies:
   firebase_core:
   mongo_dart:
   google_sign_in:
-
+  page_transition:
 
 dev_dependencies:
   flutter_test:
