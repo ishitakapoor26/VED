@@ -1,15 +1,68 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:imagine_cup_software/Dashboard/dashboard.dart';
 import 'package:imagine_cup_software/Dashboard/homepage.dart';
 
 import '../Dashboard/home.dart';
 
-class onboardSecond extends StatelessWidget {
+class onboardSecond extends StatefulWidget {
   const onboardSecond({Key? key}) : super(key: key);
 
-  Future<void> signInWithGoogle() async{
+  @override
+  State<onboardSecond> createState() => _onboardSecondState();
+}
 
-  //  Create an instance of the firebase auth and google signin
+class _onboardSecondState extends State<onboardSecond> {
+  late GoogleSignIn _googleSignIn;
+
+  @override
+  FirebaseAuth auth = FirebaseAuth.instance;
+  Future<void> signInWithGoogle() async {
+    //  Create an instance of the firebase auth and google signin
+    final GoogleSignIn googleSignIn = GoogleSignIn();
+    //  Triger the authentication flow
+    final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
+
+    //  Obtain the auth details from the request
+    final GoogleSignInAuthentication? googleAuth =
+        await googleUser!.authentication;
+    //  Create new credentials
+    final AuthCredential credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth!.accessToken,
+      idToken: googleAuth!.idToken,
+    );
+    if (googleUser != null) {
+      print(googleUser.displayName);
+      print(googleUser.email);
+      print(googleUser.id);
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => Homepage()));
+    }
+    //  Sign In the user with the credentials
+    final UserCredential userCredential =
+        await auth.signInWithCredential(credential);
+  }
+
+  Future<String> getCurrentUID() async {
+    return (auth.currentUser)!.uid;
+  }
+
+  Future getCurrentUser() async {
+    return auth.currentUser;
+  }
+
+  getProfileImage() {
+    String? photo = auth.currentUser?.photoURL;
+    if (auth.currentUser!.photoURL != null) {
+      print(photo);
+      return Image.network(photo!);
+    } else {
+      return Icon(
+        Icons.account_circle,
+        size: 100,
+      );
+    }
   }
 
   @override
@@ -25,65 +78,82 @@ class onboardSecond extends StatelessWidget {
                 image: DecorationImage(
                     opacity: 0.25,
                     image: AssetImage("assets/Group 52.png"),
-                    fit: BoxFit.cover
-                )
-            ),
+                    fit: BoxFit.cover)),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               // mainAxisAlignment: MainAxisAlignment.center,
               children: [
-
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 60.0),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 15.0, vertical: 60.0),
                   child: Text(
                     "Want To Learn Science and Mathematics in an Interesting Way?",
                     style: TextStyle(
                         fontSize: 30,
                         fontFamily: "Lato",
                         color: Colors.white,
-                        fontWeight: FontWeight.w700
-                    ),
+                        fontWeight: FontWeight.w700),
                     textAlign: TextAlign.center,
-                    ),
+                  ),
                 ),
-
-
-                Image.asset('assets/rafiki.png',
+                Image.asset(
+                  'assets/rafiki.png',
                   width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height/2.8,),
+                  height: MediaQuery.of(context).size.height / 2.8,
+                ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 45.0, vertical:3),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 45.0, vertical: 3),
                   child: ElevatedButton(
-                      onPressed:(){} ,
-                      child: Text("Register",
+                    onPressed: () {},
+                    child: Text(
+                      "Register",
                       style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 16,
-                        fontFamily: "Lato"
-                      ),),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xffFFA800),
-                    minimumSize: const Size.fromHeight(50),
-                  ),),
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16,
+                          fontFamily: "Lato"),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(0xffFFA800),
+                      minimumSize: const Size.fromHeight(50),
+                    ),
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text("Already have an account?",style: TextStyle(
+                      Text(
+                        "Already have an account?",
+                        style: TextStyle(
                           fontWeight: FontWeight.w400,
                           fontSize: 17,
                           fontFamily: "Lato",
-                        color: Colors.white,
-                      ),),
+                          color: Colors.white,
+                        ),
+                      ),
                       GestureDetector(
-                        child: Text(" Log In",style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 15,
-                          fontFamily: "Lato",
-                          color: Color(0xffFFA800),
-                        ),),
+                        child: Text(
+                          " Log In",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 15,
+                            fontFamily: "Lato",
+                            color: Color(0xffFFA800),
+                          ),
+                        ),
+                        onTap: () async {
+                          // GoogleSignInAccount? googleSignInAccount= await _googleSignIn.signIn();
+                          await signInWithGoogle();
+                          getProfileImage();
+                          if (mounted) {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Home()));
+                          }
+                        },
                       )
                     ],
                   ),
@@ -92,21 +162,25 @@ class onboardSecond extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 35),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 18.0, vertical: 35),
                       child: Align(
                         alignment: Alignment.bottomLeft,
                         child: CircleAvatar(
                           radius: 24,
                           backgroundColor: Color(0xffFFA800),
                           child: IconButton(
-                            icon: Icon(Icons.arrow_back_ios,
-                              color: Colors.white,),
+                            icon: Icon(
+                              Icons.arrow_back_ios,
+                              color: Colors.white,
+                            ),
                             onPressed: () {
                               Navigator.pop(context);
                             },
                           ),
                         ),
-                      ),),
+                      ),
+                    ),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 35.0),
                       child: Row(
@@ -117,7 +191,8 @@ class onboardSecond extends StatelessWidget {
                             backgroundColor: Colors.white54,
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                            padding:
+                                const EdgeInsets.only(left: 8.0, right: 8.0),
                             child: CircleAvatar(
                               radius: 4,
                               backgroundColor: Colors.white54,
@@ -128,23 +203,31 @@ class onboardSecond extends StatelessWidget {
                             backgroundColor: Color(0xffFFA800),
                           )
                         ],
-                      ),),
+                      ),
+                    ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 3),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 18.0, vertical: 3),
                       child: Align(
                         alignment: Alignment.bottomRight,
                         child: CircleAvatar(
                           radius: 24,
                           backgroundColor: Color(0xffFFA800),
                           child: IconButton(
-                            icon: Icon(Icons.arrow_forward_ios,
-                              color: Colors.white,),
+                            icon: Icon(
+                              Icons.arrow_forward_ios,
+                              color: Colors.white,
+                            ),
                             onPressed: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Home()));
                             },
                           ),
                         ),
-                      ),)
+                      ),
+                    )
                   ],
                 ),
               ],

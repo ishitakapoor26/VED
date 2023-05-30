@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:imagine_cup_software/Dashboard/homepageSlider.dart';
 
 import '../concepts/concepts.dart';
@@ -15,9 +17,44 @@ class Homepage extends StatefulWidget {
 
 class _HomepageState extends State<Homepage> {
 
+  final FirebaseAuth auth = FirebaseAuth.instance;
+  final GoogleSignIn googleSignIn = GoogleSignIn();
+
+  Future<String> getCurrentUID() async {
+    return (auth.currentUser)!.uid;
+  }
+
+  Future getCurrentUser() async {
+    return auth.currentUser;
+  }
+
+  getProfileImage() {
+    String? photo = auth.currentUser?.photoURL;
+    if (auth.currentUser!.photoURL != null) {
+      print(photo);
+      return Image.network(photo!,
+      height: MediaQuery.of(context).size.height/8,
+        width: MediaQuery.of(context).size.width/8,
+
+      );
+    } else {
+      return Icon(
+        Icons.account_circle,
+        size: 100,
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      endDrawer: Drawer(
+        child: ListView(
+          children: <Widget>[
+
+          ],
+        ),
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -29,7 +66,7 @@ class _HomepageState extends State<Homepage> {
                 children: <Widget>[
                   Padding(
                     padding: const EdgeInsets.all(12.0),
-                    child: Text("Hello, Alex!",
+                    child: Text("Hello, ${auth.currentUser?.displayName}!",
                     style: TextStyle(
                       fontSize: 20,
                       color: Colors.black54,
@@ -38,12 +75,15 @@ class _HomepageState extends State<Homepage> {
                     ),),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: IconButton(
-                        iconSize: 30.0,
-                        onPressed: (){},
-                        icon: Icon(Icons.account_circle),
-                    ),
+                    padding: const EdgeInsets.all(14.0),
+                    child: GestureDetector(
+                      child: ClipOval(
+                        child: SizedBox.fromSize(
+                          size: Size.fromRadius(20),
+                          child: getProfileImage(),
+                        ),
+                      ),
+                    )
                   ),
                 ],
               ),
