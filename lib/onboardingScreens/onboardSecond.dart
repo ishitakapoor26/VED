@@ -85,7 +85,7 @@ class _onboardSecondState extends State<onboardSecond> {
               children: [
                 Padding(
                   padding: const EdgeInsets.symmetric(
-                      horizontal: 15.0, vertical: 60.0),
+                      horizontal: 12.0, vertical: 60.0),
                   child: Text(
                     "Want To Learn Science and Mathematics in an Interesting Way?",
                     style: TextStyle(
@@ -103,67 +103,49 @@ class _onboardSecondState extends State<onboardSecond> {
                 ),
                 Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 45.0, vertical: 3),
+                      const EdgeInsets.symmetric(horizontal: 35.0, vertical: 3),
                   child: ElevatedButton(
-                    onPressed: () {},
-                    child: Text(
-                      "Register",
-                      style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 16,
-                          fontFamily: "Lato"),
+                    onPressed: () async{
+                      await signInWithGoogle();
+                      getProfileImage();
+                      if (mounted) {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Home()));
+                      }
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        CircleAvatar(
+                          radius: 15,
+                          backgroundImage: NetworkImage("https://w7.pngwing.com/pngs/63/1016/png-transparent-google-logo-google-logo-g-suite-chrome-text-logo-chrome.png"),
+                          backgroundColor: Colors.transparent,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 8.0),
+                          child: Text(
+                            "Sign-up/ Sign-in with Google",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 16,
+                                fontFamily: "Lato"),
+                          ),
+                        ),
+                      ],
                     ),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color(0xffFFA800),
-                      minimumSize: const Size.fromHeight(50),
+                      minimumSize: const Size.fromHeight(55),
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Already have an account?",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 17,
-                          fontFamily: "Lato",
-                          color: Colors.white,
-                        ),
-                      ),
-                      GestureDetector(
-                        child: Text(
-                          " Log In",
-                          style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 15,
-                            fontFamily: "Lato",
-                            color: Color(0xffFFA800),
-                          ),
-                        ),
-                        onTap: () async {
-                          // GoogleSignInAccount? googleSignInAccount= await _googleSignIn.signIn();
-                          await signInWithGoogle();
-                          getProfileImage();
-                          if (mounted) {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Home()));
-                          }
-                        },
-                      )
-                    ],
-                  ),
-                ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 18.0, vertical: 35),
+                      padding: const EdgeInsets.symmetric( vertical: 35,
+                          horizontal: 18.0),
                       child: Align(
                         alignment: Alignment.bottomLeft,
                         child: CircleAvatar(
@@ -181,55 +163,39 @@ class _onboardSecondState extends State<onboardSecond> {
                         ),
                       ),
                     ),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width/4.5,
+                    ),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 35.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          CircleAvatar(
-                            radius: 4,
-                            backgroundColor: Colors.white54,
-                          ),
-                          Padding(
-                            padding:
-                                const EdgeInsets.only(left: 8.0, right: 8.0),
-                            child: CircleAvatar(
+                      child: Align(
+                        alignment: Alignment.topCenter,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            CircleAvatar(
                               radius: 4,
                               backgroundColor: Colors.white54,
                             ),
-                          ),
-                          CircleAvatar(
-                            radius: 4,
-                            backgroundColor: Color(0xffFFA800),
-                          )
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 18.0, vertical: 3),
-                      child: Align(
-                        alignment: Alignment.bottomRight,
-                        child: CircleAvatar(
-                          radius: 24,
-                          backgroundColor: Color(0xffFFA800),
-                          child: IconButton(
-                            icon: Icon(
-                              Icons.arrow_forward_ios,
-                              color: Colors.white,
+                            Padding(
+                              padding:
+                              const EdgeInsets.only(left: 8.0, right: 8.0),
+                              child: CircleAvatar(
+                                radius: 4,
+                                backgroundColor: Colors.white54,
+                              ),
                             ),
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Home()));
-                            },
-                          ),
+                            CircleAvatar(
+                              radius: 4,
+                              backgroundColor: Color(0xffFFA800),
+                            )
+                          ],
                         ),
                       ),
-                    )
+                    ),
                   ],
                 ),
+
               ],
             ),
           ),

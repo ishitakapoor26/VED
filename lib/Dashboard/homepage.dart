@@ -104,7 +104,7 @@ class _HomepageState extends State<Homepage> {
                       child: TextField(
                         style: TextStyle(
                           letterSpacing: 0.5,
-                          color: Colors.grey.shade100,
+                          color: Colors.black,
                           fontFamily: "Lato",
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
@@ -124,6 +124,7 @@ class _HomepageState extends State<Homepage> {
                             ),
                               child: Icon(Icons.search,)),
                           suffixIconColor: Colors.white,
+
                         ),
                       ),
                     ),

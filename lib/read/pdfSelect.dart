@@ -146,7 +146,7 @@ class _PdfSelectState extends State<PdfSelect> {
                                 child: TextField(
                                   style: TextStyle(
                                     letterSpacing: 0.5,
-                                    color: Colors.grey.shade100,
+                                    color: Colors.black,
                                     fontFamily: "Lato",
                                     fontSize: 16,
                                     fontWeight: FontWeight.w500,
