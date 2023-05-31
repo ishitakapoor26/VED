@@ -33,13 +33,13 @@ class _HomepageState extends State<Homepage> {
 
   getProfileImage() {
     String? photo = auth.currentUser?.photoURL;
-    if (auth.currentUser!.photoURL != null) {
+    if (auth.currentUser?.photoURL != null) {
       print(photo);
-      return Image.network(photo!,
+      return photo!=null?Image.network(photo,
       height: MediaQuery.of(context).size.height/8,
         width: MediaQuery.of(context).size.width/8,
 
-      );
+      ): Icon(Icons.account_circle);
     } else {
       return Icon(
         Icons.account_circle,
@@ -62,7 +62,7 @@ class _HomepageState extends State<Homepage> {
                 children: <Widget>[
                   Padding(
                     padding: const EdgeInsets.all(12.0),
-                    child: Text("Hello, ${auth.currentUser?.displayName}!",
+                    child: Text("Hello, ${auth.currentUser?.displayName}",
                     style: TextStyle(
                       fontSize: 20,
                       color: Colors.black54,
@@ -80,7 +80,7 @@ class _HomepageState extends State<Homepage> {
                         ),
                       ),
                       onTap: (){
-                        Navigator.push(context, PageTransition(child: profilePage(auth.currentUser!.photoURL, auth.currentUser!.displayName) , type: PageTransitionType.rightToLeft));
+                        Navigator.push(context, PageTransition(child: profilePage(auth.currentUser?.photoURL, auth.currentUser?.displayName) , type: PageTransitionType.rightToLeft));
                       },
                     )
                   ),

@@ -1,4 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+
+import '../onboardingScreens/onboardSecond.dart';
 
 class profilePage extends StatefulWidget {
   final image;
@@ -12,6 +16,10 @@ class profilePage extends StatefulWidget {
 }
 
 class _profilePageState extends State<profilePage> {
+
+  FirebaseAuth auth= FirebaseAuth.instance;
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -141,7 +149,22 @@ class _profilePageState extends State<profilePage> {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 22.0),
-            child: Text(
+            child: str=="Log out"?GestureDetector(
+              child: Text(
+                str,
+                style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 18,
+                    fontFamily: "Lato"),
+                textAlign: TextAlign.center,
+              ),
+              onTap: () async{
+                await auth.currentUser?.delete();
+                await auth.signOut();
+                await _googleSignIn.signOut();
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>onboardSecond()));
+              },
+            ):Text(
               str,
               style: TextStyle(
                   fontWeight: FontWeight.w500,
