@@ -58,7 +58,7 @@ class _onboardSecondState extends State<onboardSecond> {
       print(photo);
       return Image.network(photo!);
     } else {
-      return Icon(
+      return const Icon(
         Icons.account_circle,
         size: 100,
       );
@@ -73,7 +73,7 @@ class _onboardSecondState extends State<onboardSecond> {
           child: Container(
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 color: Color(0xff19786A),
                 image: DecorationImage(
                     opacity: 0.25,
@@ -83,9 +83,9 @@ class _onboardSecondState extends State<onboardSecond> {
               crossAxisAlignment: CrossAxisAlignment.center,
               // mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 12.0, vertical: 60.0),
+                const Padding(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 12.0, vertical: 60.0),
                   child: Text(
                     "Want To Learn Science and Mathematics in an Interesting Way?",
                     style: TextStyle(
@@ -105,26 +105,27 @@ class _onboardSecondState extends State<onboardSecond> {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 35.0, vertical: 3),
                   child: ElevatedButton(
-                    onPressed: () async{
+                    onPressed: () async {
                       await signInWithGoogle();
                       getProfileImage();
                       if (mounted) {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => Home()));
+                                builder: (context) => const Home()));
                       }
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
+                      children: const [
                         CircleAvatar(
                           radius: 15,
-                          backgroundImage: NetworkImage("https://w7.pngwing.com/pngs/63/1016/png-transparent-google-logo-google-logo-g-suite-chrome-text-logo-chrome.png"),
+                          backgroundImage: NetworkImage(
+                              "https://w7.pngwing.com/pngs/63/1016/png-transparent-google-logo-google-logo-g-suite-chrome-text-logo-chrome.png"),
                           backgroundColor: Colors.transparent,
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(left: 8.0),
+                          padding: EdgeInsets.only(left: 8.0),
                           child: Text(
                             "Sign-up/ Sign-in with Google",
                             style: TextStyle(
@@ -136,7 +137,7 @@ class _onboardSecondState extends State<onboardSecond> {
                       ],
                     ),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xffFFA800),
+                      backgroundColor: const Color(0xffFFA800),
                       minimumSize: const Size.fromHeight(55),
                     ),
                   ),
@@ -144,15 +145,15 @@ class _onboardSecondState extends State<onboardSecond> {
                 Row(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.symmetric( vertical: 35,
-                          horizontal: 18.0),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 35, horizontal: 18.0),
                       child: Align(
                         alignment: Alignment.bottomLeft,
                         child: CircleAvatar(
                           radius: 24,
-                          backgroundColor: Color(0xffFFA800),
+                          backgroundColor: const Color(0xffFFA800),
                           child: IconButton(
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.arrow_back_ios,
                               color: Colors.white,
                             ),
@@ -164,7 +165,7 @@ class _onboardSecondState extends State<onboardSecond> {
                       ),
                     ),
                     SizedBox(
-                      width: MediaQuery.of(context).size.width/4.5,
+                      width: MediaQuery.of(context).size.width / 4.5,
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 35.0),
@@ -172,14 +173,13 @@ class _onboardSecondState extends State<onboardSecond> {
                         alignment: Alignment.topCenter,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
+                          children: const <Widget>[
                             CircleAvatar(
                               radius: 4,
                               backgroundColor: Colors.white54,
                             ),
                             Padding(
-                              padding:
-                              const EdgeInsets.only(left: 8.0, right: 8.0),
+                              padding: EdgeInsets.only(left: 8.0, right: 8.0),
                               child: CircleAvatar(
                                 radius: 4,
                                 backgroundColor: Colors.white54,
