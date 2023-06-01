@@ -56,6 +56,7 @@ dependencies:
   mongo_dart:
   google_sign_in:
   page_transition:
+  google_mlkit_text_recognition: ^0.7.0
 
 dev_dependencies:
   flutter_test:
@@ -80,6 +81,7 @@ flutter:
           - asset: assets/Lato-Bold.ttf
     assets:
       - assets/
+      - assets/pdf/
 
 
 

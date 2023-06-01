@@ -24,10 +24,13 @@
   "coursecategory": "Course Categories",
   "home": "Home",
   "category": "Category",
+  "categories": "Categories",
   "bookmark": "Bookmark",
   "chat": "Chat",
   "popconcept": "Popular Concepts",
   "exploreMaterial": "Explore Study Material",
-  "viewall": "View All >>"
-
-  }
+  "viewall": "View All >>",
+  "conceptmodule": "Concept Modules",
+  "coursestostudy": "Courses to Study",
+  "quote": "Choose.\nFilter.\nLearn.\nPractice.\nApply"
+}

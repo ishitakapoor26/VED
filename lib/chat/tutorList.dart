@@ -63,7 +63,7 @@ class _chatListState extends State<chatList> {
                                           borderRadius: BorderRadius.circular(10.0),
                                           borderSide: BorderSide.none,
                                         ),
-                                        hintText: "Search Tutors",
+                                        hintText: translation(context).tutorsearch,
                                         suffixIcon: Padding(
                                           padding: const EdgeInsets.only(right: 8.0),
                                           child: Container(

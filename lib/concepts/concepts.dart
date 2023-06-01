@@ -81,7 +81,7 @@ class _ConceptsState extends State<Concepts> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Courses To Study",
+        title: Text(translation(context).coursesearch,
         style: TextStyle(
           fontFamily: "Lato",
           fontWeight: FontWeight.w600,
@@ -170,7 +170,8 @@ class _ConceptsState extends State<Concepts> {
                                   padding: const EdgeInsets.only(top: 35.0, left: 20),
                                   child: Align(
                                     alignment: Alignment.topLeft,
-                                    child: Text("Concept Modules",style:
+                                    child: Text(translation(context).conceptmodule,
+                                      style:
                                       TextStyle(
                                         fontSize: 24,
                                         fontWeight: FontWeight.w600,

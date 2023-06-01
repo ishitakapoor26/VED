@@ -1,7 +1,13 @@
+import 'dart:io';
+
+import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
+import 'package:imagine_cup_software/classes/language_constants.dart';
 import 'package:imagine_cup_software/read/pdfView.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:imagine_cup_software/Dashboard/dashboard.dart';
+import 'package:imagine_cup_software/read/textOcr.dart';
+import 'package:path_provider/path_provider.dart';
 
 import '../dbHelper/mongodb.dart';
 import '../dbHelper/readModel.dart';
@@ -102,7 +108,7 @@ class _PdfSelectState extends State<PdfSelect> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Study Material",
+        title: Text(translation(context).study,
           style: TextStyle(
               fontFamily: "Lato",
               fontWeight: FontWeight.w600,
@@ -158,7 +164,7 @@ class _PdfSelectState extends State<PdfSelect> {
                                       borderRadius: BorderRadius.circular(10.0),
                                       borderSide: BorderSide.none,
                                     ),
-                                    hintText: "Search Study Material",
+                                    hintText: translation(context).search,
                                     suffixIcon: Padding(
                                       padding: const EdgeInsets.only(right: 8.0),
                                       child: Container(
@@ -191,7 +197,7 @@ class _PdfSelectState extends State<PdfSelect> {
                                   padding: const EdgeInsets.only(top: 35.0, left: 20),
                                   child: Align(
                                     alignment: Alignment.topLeft,
-                                    child: Text("Study Materials",style:
+                                    child: Text(translation(context).study,style:
                                     TextStyle(
                                       fontSize: 24,
                                       fontWeight: FontWeight.w600,
@@ -240,6 +246,8 @@ class _PdfSelectState extends State<PdfSelect> {
   }
 
   onTap(int index) {
+    var ans = getMLText(pdfList[index]);
+    print(ans);
     Navigator.push(context, MaterialPageRoute(builder: (context)=>PdfView(pdfPath: pdfList[index], title: chapterName[index])));
   }
 }

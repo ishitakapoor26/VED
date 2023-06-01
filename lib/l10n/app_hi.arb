@@ -24,9 +24,13 @@
   "coursecategory": "कोर्स श्रेणियां",
   "home": "होम मेनू",
   "category": "श्रेणी",
+  "categories": "श्रेणियाँ",
   "bookmark": "बुकमार्क",
   "chat": "चैट",
   "popconcept": "लोकप्रिय अवधारणाएँ",
   "exploreMaterial": "अध्ययन सामग्री का अन्वेषण करें",
-  "viewall": "सभी देखें >>"
+  "viewall": "सभी देखें >>",
+  "conceptmodule": "पाठ्यक्रम मॉड्यूल",
+  "coursestostudy": "पाठ्यक्रम",
+  "quote": "चुनें।\nफ़िल्टर करें।\nजानें।\nअभ्यास करें।\nआवेदन करें!"
 }

@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 
 import 'package:imagine_cup_software/Dashboard/dashboardUI.dart';
 
+import '../classes/language_constants.dart';
+
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
 
@@ -31,7 +33,7 @@ class _DashboardState extends State<Dashboard> {
                 children: <Widget>[
                   Padding(
                     padding: const EdgeInsets.only(left: 20.0,),
-                    child: Text("Choose.\nFilter.\nLearn.\nPractice.\nApply.",
+                    child: Text(translation(context).quote,
                     style: TextStyle(
                       fontSize: 28,
                       fontWeight: FontWeight.w700,
@@ -65,7 +67,7 @@ class _DashboardState extends State<Dashboard> {
                         child: Align(
                           alignment: Alignment.topLeft,
                           child: Text(
-                            "Categories",
+                            translation(context).categories,
                             style: TextStyle(
                               fontFamily: "Lato",
                               fontWeight: FontWeight.w600,
