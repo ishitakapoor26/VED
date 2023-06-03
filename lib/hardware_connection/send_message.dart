@@ -106,7 +106,7 @@ class _ChatPageState extends State<ChatPage>
           fontWeight: FontWeight.w600
         ),
         ),
-        backgroundColor: Color(0xff19876A),
+        backgroundColor: Color(0xff19786A),
         centerTitle: true,
       ),
       body: SafeArea(

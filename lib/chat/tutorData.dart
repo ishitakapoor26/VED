@@ -1,4 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:imagine_cup_software/chat/bookingPage.dart';
 
 class tutorDetails extends StatefulWidget {
   final name;
@@ -33,6 +36,10 @@ class tutorDetails extends StatefulWidget {
 }
 
 class _tutorDetailsState extends State<tutorDetails> {
+
+  FirebaseAuth auth= FirebaseAuth.instance;
+  GoogleSignIn _googleSignIn= GoogleSignIn();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -215,7 +222,9 @@ class _tutorDetailsState extends State<tutorDetails> {
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>bookingPage(name: widget.name, email: auth.currentUser?.email)));
+                  },
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Color(0xffFFA800),
                       minimumSize: Size.fromHeight(50)),
