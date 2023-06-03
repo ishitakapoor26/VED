@@ -66,11 +66,12 @@ class _SpeechScreenState extends State<SpeechScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color(0xff19786A),
+        elevation: 0,
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.of(context).pushReplacement(
-                MaterialPageRoute(builder: (context) => Dashboard()));
+            Navigator.of(context).pop();
           },
         ),
         title: Text('Test Yourself'),
@@ -83,12 +84,13 @@ class _SpeechScreenState extends State<SpeechScreen> {
         ),
         child: AvatarGlow(
           animate: _speechEnabled,
-          glowColor: Colors.blue,
+          glowColor: Color(0xffFFA800),
           endRadius: 80,
           duration: Duration(milliseconds: 2000),
           repeatPauseDuration: Duration(milliseconds: 100),
           repeat: true,
           child: FloatingActionButton(
+            backgroundColor: Color(0xffFFA800),
             onPressed: () => _initSpeech(),
             child: Icon(_speechEnabled ? Icons.mic : Icons.mic_none),
           ),
@@ -111,6 +113,9 @@ class _SpeechScreenState extends State<SpeechScreen> {
               ),
             ),
             ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color(0xffFFA800),
+              ),
               onPressed: () {
                 if (_lastWords.toLowerCase()== myList[i]) {
                   print("true");

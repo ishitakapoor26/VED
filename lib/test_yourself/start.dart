@@ -10,10 +10,12 @@ class StartScreen extends StatelessWidget {
     return Scaffold(
 
       appBar: AppBar(
+        backgroundColor: Color(0xff19786A),
+        elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: Icon(Icons.arrow_back, color: Colors.white,),
           onPressed: () {
-            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=> Dashboard()));
+            Navigator.of(context).pop();
           },
 
         ),
@@ -21,36 +23,40 @@ class StartScreen extends StatelessWidget {
         centerTitle: true,
       ),
       backgroundColor: Colors.white,
-      body:
-
-
-
-      Column(
-          children:<Widget>[
-            Padding(
-              padding: const EdgeInsets.only(top: 60),
-              child: Image(image: AssetImage('assets/strt quiz.jpg')),
-            ),
-
-            SizedBox(height: 50,width: 200,
-              child: ElevatedButton(
-                child: Text("Let's Begin",
-
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 30
-
-                  ),
+      body: SafeArea(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+            children:<Widget>[
+              Padding(
+                padding: const EdgeInsets.only(left: 25, right: 25),
+                child: Image(image: AssetImage('assets/test.png',),
                 ),
-                // color: new Color(0xff622F74),
-                onPressed: (){
-                  Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context)=>SpeechScreen()),
-                  );
-                },
               ),
-            ),
-          ]),
+
+              SizedBox(height: 50,width: 200,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xffFFA800),
+                  ),
+                  child: Text("Let's Begin",
+
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: "Lato",
+                        fontSize: 18
+
+                    ),
+                  ),
+                  // color: new Color(0xff622F74),
+                  onPressed: (){
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(builder: (context)=>SpeechScreen()),
+                    );
+                  },
+                ),
+              ),
+            ]),
+      ),
 
     )
 

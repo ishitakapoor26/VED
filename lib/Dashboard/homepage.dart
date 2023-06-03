@@ -295,7 +295,7 @@ class _HomepageState extends State<Homepage> {
                           style: TextStyle(
                             fontFamily: "Lato",
                             fontSize: 14,
-                            color: Colors.grey.shade400
+                            color: Colors.grey.shade500
                           ),
                         ),
                       ),
@@ -328,7 +328,7 @@ class _HomepageState extends State<Homepage> {
                           style: TextStyle(
                               fontFamily: "Lato",
                               fontSize: 14,
-                              color: Colors.grey.shade400
+                              color: Colors.grey.shade500
                           ),
                         ),
                       ),
