@@ -1,12 +1,12 @@
 <div align= "center">
 
-# Ved: Education for Visually Impaired People
+# eDrishti: Education for Visually Impaired People
 
 <img src="https://github.com/ishitakapoor26/Ved/blob/main/assets/drishti.png">
 
 </div>
 
-Ved is a project which includes a software-embedded system named Drishti. Drishti is built with the vision of helping visually impaired people to study science, mathematics, technology and engineering concepts. Hence, eliminating the need of Braille (which has introduced a huge education gap in STEM for visually impaired people).
+eDrishti is a project which includes a software-embedded system named Drishti. Drishti is built with the vision of helping visually impaired people to study science, mathematics, technology and engineering concepts. Hence, eliminating the need of Braille (which has introduced a huge education gap in STEM for visually impaired people).
 
 ## Features of the application
 
